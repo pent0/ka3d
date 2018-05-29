@@ -1,0 +1,55 @@
+MSVC7 (VS Net 2003) Project Setup
+---------------------------------
+
+1. Setup paths: (needed only once per workstation)
+
+1.1. Select 'Tools->Options->Projects->VC++ Directories'
+
+1.2. Select 'Show directories for->Include files'
+
+1.3. Add '<installdir>\include' and '<installdir>\include\config\msvc7' directories
+
+1.4. Select 'Show directories for->Library files'
+
+1.5. Add '<installdir>\lib\msvc7' directory
+
+
+2. Create project:
+
+2.1. Select 'File->New->Project->Visual C++ Projects->Win32 Project'
+
+2.2. Enter name for the project and accept
+	
+2.3. Select 'Application Settings'
+
+2.4. Check 'Empty project' check box
+
+
+3. Add source files to the project:
+
+3.1. To verify your setup works correctly, copy sources from some example
+
+3.2. Add sources to project with 'Project->Add Existing Item'
+
+
+4. Link engine libraries:
+
+4.1. 'Project->Properties->Linker->Input->Additional Dependencies':
+
+4.2. In Debug build copy-paste following additional dependencies:
+math-mdd.lib lua-mdd.lib lang-mdd.lib io-mdd.lib img-mdd.lib gr-mdd.lib hgr-mdd.lib ode-mdd.lib grdx-mdd.lib framework-mdd.lib
+
+4.3. In Release build copy-paste following additional dependencies:
+math-md.lib lua-md.lib lang-md.lib io-md.lib img-md.lib gr-md.lib hgr-md.lib ode-md.lib grdx-md.lib framework-md.lib
+
+Alternative to 4.1. and 4.2. is to insert engine project files to the workspace: 'File->Add Project->Existing Project'
+
+
+5. Setup C++ code generation: 'Project->Properties->C/C++->Code Generation->Runtime Library'
+
+5.1. In Release build: Multi-threaded DLL
+
+5.2. In Debug build: Multi-threaded Debug DLL
+
+
+6. Compile, run and have fun.

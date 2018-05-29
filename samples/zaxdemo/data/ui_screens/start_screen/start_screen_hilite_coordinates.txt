@@ -1,0 +1,28 @@
+start screen button
+
+start
+X: 290
+Y: 283
+
+Options
+X: 290
+Y: 334
+
+Load
+X: 290
+Y: 384
+
+Exit
+X: 290
+Y: 434
+
+Credit
+X: 290
+Y: 484
+
+Website
+X: 290
+Y: 524
+
+
+           

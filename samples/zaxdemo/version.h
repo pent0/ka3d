@@ -1,0 +1,5 @@
+#ifndef ZAXDEMO_VERSION
+
+#define ZAXDEMO_VERSION_NUMBER "0.8"
+
+#endif // ZAXDEMO_VERSION

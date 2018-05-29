@@ -1,0 +1,16 @@
+HUD Coordinates
+
+Health bar
+
+x: 26
+y: 30
+
+Weapon bar
+
+x:26
+y: 707
+
+Coins
+
+x: 845
+y: 640

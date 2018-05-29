@@ -1,0 +1,4 @@
+load screen button
+
+X: 246 
+Y: 655

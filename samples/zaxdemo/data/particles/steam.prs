@@ -1,0 +1,166 @@
+-- 
+-- Particle systems are heavily based on concept of 'domains'. 
+-- 'Domains' are source ranges for various random 
+-- values needed by particle systems. 
+-- Domains can be sources for scalar values,  
+-- 2D and 3D vectors used in the simulation. 
+-- 
+-- For example by saying that some particle effect has 
+-- particle initial position domain set as 'Sphere with 
+-- radius 4' means that the initial positions of new  
+-- particles are randomized inside sphere which has radius 4. 
+-- If in turn the particle initial velocity domain 
+-- is set as Point {-50,0,0} then all particles get 
+-- initial velocity of -50 along negative X-axis. 
+-- 
+-- With various domains it is easy to make pretty much 
+-- any kind of particle effect. For example rain 
+-- could be done by setting position box above sky, 
+-- and then velocity Point(0,-1,0) and Gravity=-9.8. 
+-- In addition, ParticleSpriteElasticity could be 
+-- set above 0 (say, 0.1) to stretch particle bitmap 
+-- along movement speed - the system is very flexible. 
+-- 
+-- CONSTANT x              -- CONSTANT -1 means infinity if only positive values are expected 
+-- RANGE begin end 
+-- POINT x y z 
+-- SPHERE x y z inradius outradius 
+-- LINE x1 y1 z1 x2 y2 z2 
+-- BOX minx miny minz maxx maxy maxz 
+-- CYLINDER x1 y1 z1 x2 y2 z2 inradius outradius 
+-- DISK ox oy oz nx ny nz inradius outradius 
+-- RECTANGLE ox oy oz ux uy uz vx vy vz 
+-- TRIANGLE vx0 vy0 vz0 vx1 vy1 vz1 vx2 vy2 vz2 
+-- 
+-- .. where: 
+-- inradius    = min radius in which particles are born 
+-- outradius   = max radius in which particles are born 
+-- x1 y1 z1    = start Point coordinates 
+-- x2 y2 z2    = end Point coordinates 
+-- ox oy oz    = origin coordinates 
+-- nx ny nz    = plane normal coordinates 
+-- ux uy uz    = vector from origin to 'horizontal' edge 
+-- vx vy vz    = vector from origin to 'vertical' edge 
+-- vx0 vy0 vz0 = first vertex of Triangle 
+-- vx1 vy1 vz1 = second vertex of Triangle 
+-- vx2 vy2 vz2 = third vertex of Triangle 
+--
+
+-----------------------
+-- System properties --
+-----------------------
+
+-- Maximum number of simultaneous emissions
+systemMaxEmissions = 1
+
+-- How emission limit is maintained, kill: NONE, OLDEST, RANDOM
+systemLimitKill = NONE
+
+-- Number of new emissions / second
+systemRate = CONSTANT 100 
+
+-- Time after no more new emissions are launched
+systemStopTime = CONSTANT -1 
+
+-- Lifetime of the whole system
+systemLifeTime = CONSTANT -1 
+
+----------------------------------
+-- Particle emission properties --
+----------------------------------
+
+-- Maximum number of particles simultanously
+emissionMaxParticles = 50
+
+-- How max particle limit is maintained: kill NONE, OLDEST, RANDOM
+emissionLimitKill = RANDOM
+
+-- How max particle limit is maintained: kill NONE, OLDEST, RANDOM
+emissionRate = CONSTANT 200 
+
+-- Time after no more new particles are emitted
+emissionStopTime = CONSTANT -1 
+
+-- Lifetime of particle emitter
+emissionLifeTime = CONSTANT -1 
+
+-- Pivot point for the emissions
+emissionPosition = POINT 0 0 0 
+
+-------------------------
+-- Particle properties --
+-------------------------
+
+-- Particle life time in seconds
+particleLifeTime = CONSTANT 0.5 
+
+-- If true then particles are updated even though they are not visible. Note: Normally this should be set to false
+particleUpdateAlways = false
+
+-- Volume in which the particles are born
+particleStartPosition = SPHERE 0 0 0 0 0 
+
+-- Domain for velocity vector values. This works the same way as with position, but instead of randomizing initial positions for the particles this time velocity vectors are randomized so that the length and direction of the velocity is randomized from the specified domain when the velocity vector is considered to start at origin.
+particleStartVelocity = SPHERE 0 0 0 0 1 
+
+-- Start size of particle
+particleStartSize = CONSTANT 0.1 
+
+-- Life time end size of particle
+particleEndSize = CONSTANT 0.1 
+
+-- Start opacity of particle
+particleStartAlpha = CONSTANT 1 
+
+-- End opacity of particle
+particleEndAlpha = CONSTANT 0 
+
+-- Start color (R,G,B in range 0-1) of particle
+particleStartColor = BOX 1 1 1 1 1 1 
+
+-- End color (R,G,B in range 0-1) of particle
+particleEndColor = BOX 0.3 0.3 1 0.3 0.3 1 
+
+-- Particle sprite elasticity wrt particle velocity, set Constant(0) to disable (note that elasticity and rotation are mutually exclusive)
+particleSpriteElasticity = CONSTANT 0 
+
+-- Particle sprite initial rotation (degrees) (note that elasticity and rotation are mutually exclusive)
+particleSpriteRotation = CONSTANT 0 
+
+-- Particle sprite initial rotation speed (degrees/sec)
+particleSpriteStartRotationSpeed = CONSTANT -360 
+
+-- Particle sprite end rotation speed (degrees/sec)
+particleSpriteEndRotationSpeed = CONSTANT 0 
+
+-------------------------------
+-- Particle bitmap animation --
+-------------------------------
+
+-- View mode: CAMERAUP, WORLDUP. View mode defines are particles rotated when camera rotates along Z-axis. If view mode is WORLDUP, then particle 'up' direction is the same as world Y-axis. If view mode is CAMERAUP, then particle 'up' direction is the same as camera Y-axis. Note: View mode does not affect if ParticleSpriteElasticity is set as it particle sprite elasticity defines the 'up' direction based on particle velocity
+textureView = WORLDUP
+
+-- Texture bitmap file name
+textureName = textures/smoke1.tga
+
+-- Method of selecting which frame to display: LOOP plays back animation in Constant frame rate (TextureFramerate). LIFE starts from first frame and gradually animates until end-of-life. RANDOM selects random frame in interval defined by TextureFramerate
+textureAnimation = LIFE
+
+-- Shader name used to render particles
+shaderName = sprite-add
+
+-- Playback rate if TextureAnimation is LOOP
+textureFrameRate = 10
+
+-- Number of frames embedded to texture (nxn grid)
+textureFrames = 1
+
+--------------------------------
+-- Forces affecting particles --
+--------------------------------
+
+-- Gravity affecting particles (m/s^2)
+gravity = -3.81
+
+-- Wind affecting particles (m/s)
+wind = 0 0 0.2

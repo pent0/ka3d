@@ -1,0 +1,6 @@
+C:\Documents and Settings\jani\My Documents\tmp\t$m$p$$$\scene1_parallax_mapping_and_physics.max
+C:\Documents and Settings\jani\My Documents\tmp\t$m$p$$$\MAXFILES.TXT
+C:\3dsmax7\maps\testmap_base.dds
+C:\3dsmax7\maps\testmap_normal_with_height_in_alpha.dds
+C:\Documents and Settings\jani\My Documents\ka3d\data\shaders\level\parallax.fx
+C:\3dsmax7\maps\fx\Default.fx

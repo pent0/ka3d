@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "draw_triangle", "draw_triangle.vcproj", "{4B3D9A88-A770-47E4-9A9B-5B688F1F0CE0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gr", "..\..\..\build\msvc7\gr\gr.vcproj", "{DCF97E5B-E033-4BD6-8F2A-2D1D6031FA03}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "framework", "..\..\..\build\msvc7\framework\framework.vcproj", "{1E721F2B-153D-49FC-B77E-FB76DD840228}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B3D9A88-A770-47E4-9A9B-5B688F1F0CE0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4B3D9A88-A770-47E4-9A9B-5B688F1F0CE0}.Debug|Win32.Build.0 = Debug|Win32
+		{4B3D9A88-A770-47E4-9A9B-5B688F1F0CE0}.Release|Win32.ActiveCfg = Release|Win32
+		{4B3D9A88-A770-47E4-9A9B-5B688F1F0CE0}.Release|Win32.Build.0 = Release|Win32
+		{DCF97E5B-E033-4BD6-8F2A-2D1D6031FA03}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DCF97E5B-E033-4BD6-8F2A-2D1D6031FA03}.Debug|Win32.Build.0 = Debug|Win32
+		{DCF97E5B-E033-4BD6-8F2A-2D1D6031FA03}.Release|Win32.ActiveCfg = Release|Win32
+		{DCF97E5B-E033-4BD6-8F2A-2D1D6031FA03}.Release|Win32.Build.0 = Release|Win32
+		{1E721F2B-153D-49FC-B77E-FB76DD840228}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1E721F2B-153D-49FC-B77E-FB76DD840228}.Debug|Win32.Build.0 = Debug|Win32
+		{1E721F2B-153D-49FC-B77E-FB76DD840228}.Release|Win32.ActiveCfg = Release|Win32
+		{1E721F2B-153D-49FC-B77E-FB76DD840228}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,7 @@
+1) Install DirectX 9 SDK
+2) Checkout ka3d to e.g. c:\ka3d
+3) Add C:\ka3d\SystemDLL to PATH
+4) Set KA3D environment variable as c:\ka3d
+5) Add c:\ka3d\include and c:\ka3d\include\config\msvc7 to list of include directories
+6) Add c:\ka3d\lib\msvc7 to list of library paths
+7) Restart Visual Studio

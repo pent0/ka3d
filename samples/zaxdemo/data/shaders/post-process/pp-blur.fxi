@@ -1,0 +1,185 @@
+//
+// Pre-conditions:
+// - #define BLUR_HORIZONTAL or BLUR_VERTICAL before #including
+//
+// Post-process effect: Horizontal/vertical blur
+//
+// Copyright (C) 2004 Jani Kajala. All rights reserved. Consult your license regarding permissions and restrictions.
+//
+
+// maps
+texture BASEMAP; // source image
+// shader specific constants
+float	PIXELSIZE = 1.0/256.0; // inverse of RTT width in pixels * size scale
+// shader specific literals
+#define BLUR_BRIGHTNESS 0.8
+
+
+struct VS_IN
+{
+	float3 pos		 : POSITION;
+	float2 uv0		 : TEXCOORD0;
+};
+
+struct PS_IN
+{
+	float4 pos		 : POSITION;
+	float2 uv0		 : TEXCOORD0;
+	float2 uv1		 : TEXCOORD1;
+	float2 uv2		 : TEXCOORD2;
+	float2 uv3		 : TEXCOORD3;
+};
+
+
+sampler basetex = sampler_state
+{
+	Texture   = (BASEMAP);
+	MinFilter = LINEAR;
+	MagFilter = LINEAR;
+	MipFilter = LINEAR;
+    AddressU = Clamp;
+    AddressV = Clamp;
+};
+
+
+PS_IN vsBlur( const VS_IN IN, uniform float2 psize, uniform float pixeloffset )
+{
+	PS_IN o = (PS_IN)0;
+	o.pos = float4(IN.pos,1);
+	o.uv0 = IN.uv0 + psize*(pixeloffset+0.5);
+	o.uv1 = IN.uv0 + psize*(pixeloffset+1.5);
+	o.uv2 = IN.uv0 + psize*(pixeloffset+2.5);
+	o.uv3 = IN.uv0 + psize*(pixeloffset+3.5);
+	return o;
+}
+
+half4 psBlur0( PS_IN p ) : COLOR
+{
+	half3
+	c =  tex2D( basetex, p.uv0 ).xyz * BLUR_BRIGHTNESS * 0.165256;
+	c += tex2D( basetex, p.uv1 ).xyz * BLUR_BRIGHTNESS * 0.160336;
+	c += tex2D( basetex, p.uv2 ).xyz * BLUR_BRIGHTNESS * 0.15093;
+	c += tex2D( basetex, p.uv3 ).xyz * BLUR_BRIGHTNESS * 0.137845;
+	return float4( c, 1 );
+}
+
+half4 psBlur1( PS_IN p ) : COLOR
+{
+	half3
+	c =  tex2D( basetex, p.uv0 ).xyz * BLUR_BRIGHTNESS * 0.122128;
+	c += tex2D( basetex, p.uv1 ).xyz * BLUR_BRIGHTNESS * 0.10499;
+	c += tex2D( basetex, p.uv2 ).xyz * BLUR_BRIGHTNESS * 0.0875721;
+	c += tex2D( basetex, p.uv3 ).xyz * BLUR_BRIGHTNESS * 0.0708685;
+	return float4( c, 1 );
+}
+
+
+#ifdef BLUR_HORIZONTAL
+technique T0Horz
+{
+	pass PassMinus0
+	{
+		VertexShader = compile vs_1_1 vsBlur( float2(-PIXELSIZE,0), 0 );
+		PixelShader = compile ps_1_1 psBlur0();
+		CullMode = NONE;
+		AlphaBlendEnable = FALSE;
+
+		ZWriteEnable = FALSE;
+		ZEnable = FALSE;
+	}
+
+	pass PassPlus0
+	{
+		VertexShader = compile vs_1_1 vsBlur( float2(PIXELSIZE,0), 0 );
+		PixelShader = compile ps_1_1 psBlur0();
+		CullMode = NONE;
+		SrcBlend = ONE;
+		DestBlend = ONE;
+		AlphaBlendEnable = TRUE;
+
+		ZWriteEnable = FALSE;
+		ZEnable = FALSE;
+	}
+
+	pass PassMinus1
+	{
+		VertexShader = compile vs_1_1 vsBlur( float2(-PIXELSIZE,0), 4 );
+		PixelShader = compile ps_1_1 psBlur1();
+		CullMode = NONE;
+		SrcBlend = ONE;
+		DestBlend = ONE;
+		AlphaBlendEnable = TRUE;
+
+		ZWriteEnable = FALSE;
+		ZEnable = FALSE;
+	}
+
+	pass PassPlus1
+	{
+		VertexShader = compile vs_1_1 vsBlur( float2(PIXELSIZE,0), 4 );
+		PixelShader = compile ps_1_1 psBlur1();
+		CullMode = NONE;
+		SrcBlend = ONE;
+		DestBlend = ONE;
+		AlphaBlendEnable = TRUE;
+
+		ZWriteEnable = FALSE;
+		ZEnable = FALSE;
+	}
+}
+#endif // BLUR_HORIZONTAL
+
+#ifdef BLUR_VERTICAL
+technique T0Vert
+{
+	pass PassMinus0
+	{
+		VertexShader = compile vs_1_1 vsBlur( float2(0,-PIXELSIZE), 0 );
+		PixelShader = compile ps_1_1 psBlur0();
+		CullMode = NONE;
+		AlphaBlendEnable = FALSE;
+
+		ZWriteEnable = FALSE;
+		ZEnable = FALSE;
+	}
+
+	pass PassPlus0
+	{
+		VertexShader = compile vs_1_1 vsBlur( float2(0,PIXELSIZE), 0 );
+		PixelShader = compile ps_1_1 psBlur0();
+		CullMode = NONE;
+		SrcBlend = ONE;
+		DestBlend = ONE;
+		AlphaBlendEnable = TRUE;
+
+		ZWriteEnable = FALSE;
+		ZEnable = FALSE;
+	}
+
+	pass PassMinus1
+	{
+		VertexShader = compile vs_1_1 vsBlur( float2(0,-PIXELSIZE), 4 );
+		PixelShader = compile ps_1_1 psBlur1();
+		CullMode = NONE;
+		SrcBlend = ONE;
+		DestBlend = ONE;
+		AlphaBlendEnable = TRUE;
+
+		ZWriteEnable = FALSE;
+		ZEnable = FALSE;
+	}
+
+	pass PassPlus1
+	{
+		VertexShader = compile vs_1_1 vsBlur( float2(0,PIXELSIZE), 4 );
+		PixelShader = compile ps_1_1 psBlur1();
+		CullMode = NONE;
+		SrcBlend = ONE;
+		DestBlend = ONE;
+		AlphaBlendEnable = TRUE;
+
+		ZWriteEnable = FALSE;
+		ZEnable = FALSE;
+	}
+}
+#endif // BLUR_VERTICAL

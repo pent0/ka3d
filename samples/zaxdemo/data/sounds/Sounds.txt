@@ -1,0 +1,20 @@
+The following sounds are the only ones we lack right now. That means you'd have to create them from scratch. 
+
+
+*Vacuum noise for the Wobble creature -- He has a large vacuum hose that "Blows" air out trying to push main character off the Volcano
+
+*Lava noise -- some sorta noise that would simulate lava flow and ambient lava (Movies like Volcano Tommy lee Jones)
+
+*Beaming noise -- similar to Star Trek except cooler if possible. Zax(main character) beams in on a teleport pad.
+
+*Generic Robot talk -- clanking and beeping
+	*Happy
+	*Mad
+	*Dieing
+
+
+That should be about it. Some of the sounds could just be tweeked a bit and would be 'legal' to be 
+reused. So, that might make this easier to accomplish in such a short time. 
+
+
+Thanks!

@@ -1,0 +1,37 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hgr", "hgr.vcproj", "{04D3BAA8-00E0-4469-922F-D6C1A298196E}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "math", "..\math\math.vcproj", "{5BD3E80E-E1F7-46A3-A151-399E28F18450}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lang", "..\lang\lang.vcproj", "{65DB543F-D885-4010-859A-5A9806C8B20D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{04D3BAA8-00E0-4469-922F-D6C1A298196E}.Debug.ActiveCfg = Debug|Win32
+		{04D3BAA8-00E0-4469-922F-D6C1A298196E}.Debug.Build.0 = Debug|Win32
+		{04D3BAA8-00E0-4469-922F-D6C1A298196E}.Release.ActiveCfg = Release|Win32
+		{04D3BAA8-00E0-4469-922F-D6C1A298196E}.Release.Build.0 = Release|Win32
+		{5BD3E80E-E1F7-46A3-A151-399E28F18450}.Debug.ActiveCfg = Debug|Win32
+		{5BD3E80E-E1F7-46A3-A151-399E28F18450}.Debug.Build.0 = Debug|Win32
+		{5BD3E80E-E1F7-46A3-A151-399E28F18450}.Release.ActiveCfg = Release|Win32
+		{5BD3E80E-E1F7-46A3-A151-399E28F18450}.Release.Build.0 = Release|Win32
+		{65DB543F-D885-4010-859A-5A9806C8B20D}.Debug.ActiveCfg = Debug|Win32
+		{65DB543F-D885-4010-859A-5A9806C8B20D}.Debug.Build.0 = Debug|Win32
+		{65DB543F-D885-4010-859A-5A9806C8B20D}.Release.ActiveCfg = Release|Win32
+		{65DB543F-D885-4010-859A-5A9806C8B20D}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

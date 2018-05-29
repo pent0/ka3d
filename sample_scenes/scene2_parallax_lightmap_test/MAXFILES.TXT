@@ -1,0 +1,8 @@
+C:\Documents and Settings\jani\My Documents\tmp\t$m$p$$$\scene2_parallax_lightmap_test.max
+C:\Documents and Settings\jani\My Documents\tmp\t$m$p$$$\MAXFILES.TXT
+C:\3dsmax7\maps\fx\normal_map_specular.fx
+C:\3dsmax7\maps\fx\Default.fx
+C:\3dsmax7\maps\fx\normal_map_offset.fx
+C:\3dsmax7\maps\testmap_base.dds
+C:\3dsmax7\maps\testmap_normal_with_height_in_alpha.dds
+C:\Documents and Settings\jani\My Documents\ka3d\data\shaders\level\parallax.fx
